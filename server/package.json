@@ -12,6 +12,7 @@
   "dependencies": {
     "@tonaljs/tonal": "^4.6.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "cors": "^2.8.5"
   }
 }

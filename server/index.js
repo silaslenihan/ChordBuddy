@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-
-var json_data = [];
 app.use(cors());
 
 // provide global access to remote storage

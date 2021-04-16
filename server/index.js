@@ -82,5 +82,5 @@ app.get('/api/get_chords.json', (req, res) => {
     );
   });
 
-  const PORT = process.env.PORT || 3001;
-  app.listen(PORT, () => console.log('App listening on port ' + PORT));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.log('App listening on port ' + PORT));

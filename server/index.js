@@ -5,6 +5,19 @@ const cors = require('cors');
 var json_data = [];
 app.use(cors());
 
+// provide global access to remote storage
+const { FIREBASE_CONFIG } = require('./secrets');
+const { Storage } = require('@google-cloud/storage');
+const storage = new Storage({
+    credentials: {
+        client_email: FIREBASE_CONFIG.client_email,
+        private_key: FIREBASE_CONFIG.private_key
+    }
+});
+// note, using the default bucket name 
+const IMAGES_REF = storage.bucket(`${FIREBASE_CONFIG.project_id}.appspot.com`);
+
+
 // Import tonaljs API
 const { Key } = require("@tonaljs/tonal");
 
@@ -37,6 +50,32 @@ function getChords(key) {
     
     return json;
 }
+
+app.get(
+    '/api/getImages',
+    async (req, res, next) => {
+        try {
+            // retrieve a list of files saved in storage bucket
+            const files = await IMAGES_REF.getFiles();
+            // get just the data useful to report back to frontend, do not want to store data on the server
+            const imageURLs = files[0].filter(f => (!f.publicUrl().endsWith('/')))
+                                      .map(f => ({ url: f.publicUrl(), alt: f.name.split('/').pop() }));
+            res.status(200);
+            for (let i = 0; i < files[0].length; i++) {
+                console.log(files[0][i].publicUrl());
+            }
+
+            res.json(imageURLs);
+
+            
+        }
+        catch (error) {
+            console.log(error);
+            res.status(500);
+            next(error);
+        }
+    }
+);
 
 app.get('/api/get_chords.json', (req, res) => {
     key = req.query.key;

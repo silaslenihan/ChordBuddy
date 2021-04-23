@@ -25,13 +25,10 @@ function getChords(key) {
     chords = {}
     if (key.includes("m")) {
         key = key.replace("m","");
-        console.log(key);
         chords = Key.minorKey(key).natural.chords;
-        console.log("minor!");
     } else {
         chords = Key.majorKey(key).chords;
     }
-    console.log(chords);
     //format returned data to our liking.
     for(let i=0; i < chords.length; i++) {
         if (chords[i].includes("m7b5")) {
@@ -43,11 +40,32 @@ function getChords(key) {
             chords[i] = chords[i] + "maj";
         }
     }
-    console.log(chords);
     json = chords
     
     return json;
 }
+
+// app.post(
+//     '/api/addImage',
+//     // check parameters from the user to make sure they are all included
+//     validateUserData([ 'title' ], 'body'),
+//     validateUserData([ 'image' ], 'files'),
+//     // can now assume complete user data, so do the work to change data structure
+//     async (req, res, next) => {
+//         // get file info parsed from HTTP metadata
+//         const newImage = req.files.image;
+//         // choose name, including any organizational folders, to use on remote storage
+//         const remoteName = `images/${newImage.name}`;
+//         // save the image to the Cloud PUBLICLY so it can accessed by the frontend directly
+//         await IMAGES_REF.upload(newImage.tempFilePath, { destination: remoteName, public: true });
+//         // get URL link to stored data
+//         const imageURL = await IMAGES_REF.file(remoteName).publicUrl();
+//         res.status(200);
+//         res.json({ alt: req.body.title, url: imageURL });
+//     }
+// );
+
+
 
 app.get(
     '/api/getImages',
@@ -58,14 +76,9 @@ app.get(
             // get just the data useful to report back to frontend, do not want to store data on the server
             const imageURLs = files[0].filter(f => (!f.publicUrl().endsWith('/')))
                                       .map(f => ({ url: f.publicUrl(), alt: f.name.split('/').pop() }));
-            res.status(200);
-            for (let i = 0; i < files[0].length; i++) {
-                console.log(files[0][i].publicUrl());
-            }
-
-            res.json(imageURLs);
-
             
+            res.status(200);
+            res.json(imageURLs);
         }
         catch (error) {
             console.log(error);

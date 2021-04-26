@@ -14,6 +14,19 @@ admin.initializeApp({
   databaseURL: "https://chords-72fdf-default-rtdb.firebaseio.com"
 });
 
+// set up logging
+const morgan = require('morgan');
+const morganBody = require('morgan-body');
+
+app.use(morgan('\n\n:method :url :status :res[content-length] - :response-time ms'));
+app.use(express.json());
+// morganBody(app, {
+//     logRequestBody: true,
+//     logAllReqHeader: true,
+//     logResponseBody: true,
+//     logAllResHeader: true,
+// });
+
 // As an admin, the app has access to read and write all data, regardless of Security Rules
 var db = admin.database();
 
@@ -46,42 +59,108 @@ app.get(
         // extract out the useful parts of the req.user object
         const id = extractUserId(req);
         const email = req.user?.emails ? req.user.emails[0].value : null;
-        userData = await getData(id, email);
+        const type = req.query.type;
+        console.log(type);
+        if (id != '<none>') {
+            userData = await getData(id, email,type);
+        }
+        else {
+            userData = {
+                "email": "",
+                "progressions:":[],
+                "role":""
+            }
+        }
 
-        console.log(userData);
         res.json({
             displayName: req.user?.displayName,
-            email,
-            progressions: userData.progressions
+            email: email,
+            progressions: userData.progressions,
+            userID: id,
+            role: userData.role
         });
     },
 );
 
-async function getData (userID, email) {
+async function getData (userID, email, type) {
+    log = "";
     let userRef = db.ref(`users/${userID}`);
     const snapshot = await userRef.once('value');
     userData = snapshot.val();
+    
     // if user is logged in and they have no userData, then we must initialize that user in Firebase. 
     if (userID != '<none>' && userData == null) {
-        userRef.set({
-            "email":email,
-            "progressions": []   
-        });
+        log = `New user created: (Email: ${email} userID: ${userID}) at ${currentTime()}`
         userData = {
             "email": email,
-            "progressions:":[]
+            "progressions:":[],
+            "role": "user"
         }
-    }
+        userRef.set({
+            "email": email,
+            "progressions:":[],
+            "role": "user"
+        });
+        
 
+    }
+    else {
+        log = `User logged in: (Email: ${email} userID: ${userID}) at ${currentTime()}`
+    }
+    if (log != "" && type == "login") {
+        console.log("test");
+        let logsRef = db.ref('logs');
+        logsRef.push(log);
+    }
+    
     return userData;
 }
+
+// get current date. See README for source.
+function currentTime() { 
+    var currentdate = new Date(); 
+    var datetime = "Last Sync: " + currentdate.getDate() + "/"
+                    + (currentdate.getMonth()+1)  + "/" 
+                    + currentdate.getFullYear() + " @ "  
+                    + currentdate.getHours() + ":"  
+                    + currentdate.getMinutes() + ":" 
+                    + currentdate.getSeconds();
+    return datetime;
+}
+
+// remove a given chord progression
+app.put(
+    '/api/remove',
+    (req,res) => {
+        const index = req.body.index;
+        const userID = req.body.userID;
+        const email = req.body.email;
+        let userRef = db.ref(`users/${userID}`);
+        progression = userRef.child(`progressions/${index}`);
+        progression.remove();
+        log = `User deleted progression: (Email: ${email} userID: ${userID}) at ${currentTime()}`
+        let logsRef = db.ref('logs');
+        logsRef.push(log);
+        res.json({ status: 'ok' });
+
+    }
+)
 
 // API to save user's progressions
 app.put(
     '/api/progression',
     (req, res) => {
-        colors[`user:${extractUserId(req)}`] = req.body;
+        userID = extractUserId(req);
+        let email = req.body.email;
+        let ref = db.ref(`users/${userID}/progressions`);
+        let chords = req.body.prog;
+        console.log(chords);
+        ref.push(chords);
         res.json({ status: 'ok' });
+
+        log = `User deleted progression: (Email: ${email} userID: ${userID}) at ${currentTime()}`
+        let logsRef = db.ref('logs');
+        logsRef.push(log);
     },
 );
 
@@ -136,6 +215,15 @@ app.get('/api/get_chords.json', (req, res) => {
     key = req.query.key;
     res.json(
         getChords(key)
+    );
+  });
+
+  app.get('/api/getLogs', async (req, res) => {
+    let logsRef = db.ref('logs');
+    const logsSnap = await logsRef.once('value');
+    let logsData = logsSnap.val();
+    res.json(
+        logsData
     );
   });
 

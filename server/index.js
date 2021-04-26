@@ -6,6 +6,17 @@ app.use(cors());
 // provide global access to remote storage
 const { FIREBASE_CONFIG } = require('./secrets');
 const { Storage } = require('@google-cloud/storage');
+
+const admin = require("firebase-admin");
+//init realtime database
+admin.initializeApp({
+  credential: admin.credential.cert(FIREBASE_CONFIG),
+  databaseURL: "https://chords-72fdf-default-rtdb.firebaseio.com"
+});
+
+// As an admin, the app has access to read and write all data, regardless of Security Rules
+var db = admin.database();
+
 const storage = new Storage({
     credentials: {
         client_email: FIREBASE_CONFIG.client_email,
@@ -19,6 +30,60 @@ const IMAGES_REF = storage.bucket(`${FIREBASE_CONFIG.project_id}.appspot.com`);
 // Import tonaljs API
 const { Key } = require("@tonaljs/tonal");
 
+
+// set up authentication
+const auth = require('./authentication.js');
+auth.setupAuthentication(app);
+
+function extractUserId(req) {
+    return req.user?.id || '<none>';
+}
+
+// API for getting information on the logged in user
+app.get(
+    '/api/user',
+    async (req, res) => {
+        // extract out the useful parts of the req.user object
+        const id = extractUserId(req);
+        const email = req.user?.emails ? req.user.emails[0].value : null;
+        userData = await getData(id, email);
+
+        console.log(userData);
+        res.json({
+            displayName: req.user?.displayName,
+            email,
+            progressions: userData.progressions
+        });
+    },
+);
+
+async function getData (userID, email) {
+    let userRef = db.ref(`users/${userID}`);
+    const snapshot = await userRef.once('value');
+    userData = snapshot.val();
+    // if user is logged in and they have no userData, then we must initialize that user in Firebase. 
+    if (userID != '<none>' && userData == null) {
+        userRef.set({
+            "email":email,
+            "progressions": []   
+        });
+        userData = {
+            "email": email,
+            "progressions:":[]
+        }
+    }
+
+    return userData;
+}
+
+// API to save user's progressions
+app.put(
+    '/api/progression',
+    (req, res) => {
+        colors[`user:${extractUserId(req)}`] = req.body;
+        res.json({ status: 'ok' });
+    },
+);
 
 function getChords(key) {
     // Use Tonal JS to find chords in a given key
@@ -44,27 +109,6 @@ function getChords(key) {
     
     return json;
 }
-
-// app.post(
-//     '/api/addImage',
-//     // check parameters from the user to make sure they are all included
-//     validateUserData([ 'title' ], 'body'),
-//     validateUserData([ 'image' ], 'files'),
-//     // can now assume complete user data, so do the work to change data structure
-//     async (req, res, next) => {
-//         // get file info parsed from HTTP metadata
-//         const newImage = req.files.image;
-//         // choose name, including any organizational folders, to use on remote storage
-//         const remoteName = `images/${newImage.name}`;
-//         // save the image to the Cloud PUBLICLY so it can accessed by the frontend directly
-//         await IMAGES_REF.upload(newImage.tempFilePath, { destination: remoteName, public: true });
-//         // get URL link to stored data
-//         const imageURL = await IMAGES_REF.file(remoteName).publicUrl();
-//         res.status(200);
-//         res.json({ alt: req.body.title, url: imageURL });
-//     }
-// );
-
 
 
 app.get(

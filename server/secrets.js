@@ -1,13 +1,4 @@
 exports.FIREBASE_CONFIG = {
-    "web": {
-        "client_id":"662453886783-cj0cj585ifcg34srccmf3dph4suuhht3.apps.googleusercontent.com",
-        "project_id":"datalist-309421",
-        "auth_uri":"https://accounts.google.com/o/oauth2/auth",
-        "token_uri":"https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret":"_qMBlFE7ViJXik3PHJ2M7Q8n",
-        "redirect_uris":["http://localhost:9995/auth/google/redirect"]
-    },
     "type": "service_account",
     "project_id": "chords-72fdf",
     "private_key_id": "fffaae488f3cda52d7f120ed4f9b1bd845a4d22a",
@@ -17,6 +8,35 @@ exports.FIREBASE_CONFIG = {
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
     "token_uri": "https://oauth2.googleapis.com/token",
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-9duct%40chords-72fdf.iam.gserviceaccount.com"
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-9duct%40chords-72fdf.iam.gserviceaccount.com",
+    "serviceAccount":"firebase-adminsdk-9duct@chords-72fdf.iam.gserviceaccount.com"
 }
+
+
+
+// These should represent the final URLs for your front- and backend projects
+exports.DEPLOYED_URLS = {
+    // TODO: change to Heroku and GitLab URLs, with a trailing slash
+    SERVER: '',
+    VIEW: '',
+}
+
+// WARNING: really lousy encryption key!
+exports.COOKIE_ENCRYPTION_KEY = 'SECRET';
+
+// This needs to be downloaded from Google Cloud Service Credentials Console to configure access
+//   https://console.cloud.google.com/apis/credentials
+exports.OAUTH = {
+    // TODO: fill this in with downloaded JSON data
+    "web":{
+        "client_id":"662453886783-cj0cj585ifcg34srccmf3dph4suuhht3.apps.googleusercontent.com",
+        "project_id":"datalist-309421",
+        "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+        "token_uri":"https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret":"_qMBlFE7ViJXik3PHJ2M7Q8n",
+        "redirect_uris":["http://localhost:9995/auth/google/redirect",
+        "http://localhost:8080/api/auth/google/redirect",
+        "https://young-falls-82514.herokuapp.com/api/auth/google/redirect"]}
+};
   

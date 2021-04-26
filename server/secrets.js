@@ -17,8 +17,8 @@ exports.FIREBASE_CONFIG = {
 // These should represent the final URLs for your front- and backend projects
 exports.DEPLOYED_URLS = {
     // TODO: change to Heroku and GitLab URLs, with a trailing slash
-    SERVER: '',
-    VIEW: '',
+    SERVER: 'https://young-falls-82514.herokuapp.com/',
+    VIEW: 'https://compsci290_2021spring.dukecs.io/portfolio_sjl58/Chords/ui/dist/index.html/',
 }
 
 // WARNING: really lousy encryption key!

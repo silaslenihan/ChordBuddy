@@ -148,7 +148,7 @@ app.put(
 app.put(
     '/api/progression',
     (req, res) => {
-        userID = extractUserId(req);
+        userID = req.body.userID;
         let email = req.body.email;
         let ref = db.ref(`users/${userID}/progressions`);
         let chords = req.body.prog;

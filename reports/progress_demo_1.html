@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- always put your name in your work -->
+        <meta name="author" content="Silas Lenihan">
+        <!-- scale page to fit entire screen, so it properly fills non-desktop devices -->    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- load required Bootstrap and BootstrapVue CSS -->
+        
+        <!-- load Vue followed by BootstrapVue -->
+        <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+        <!-- load the following for BootstrapVueIcons support -->
+        <!-- load searching component -->
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js@latest/dist/fuse.js"></script>
+        <script src="https://www2.cs.duke.edu/courses/compsci290/spring21/resources/code/components/VueFuse.js"></script>
+   
+        
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.js"></script>
+        <!-- load draggble component -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuedraggable@latest/dist/vuedraggable.umd.js"></script>
+        <link type="text/css" rel="stylesheet" href="chords.css">
+
+        <script defer src="chords.js
+        "></script>
+   
+
+        
+        <title>CompSci 290, Spring 2021 : Chords</title>
+        
+    </head>
+    <body>
+        <h1>Progress Report 1</h1>
+        <hr>
+        <h3>Video</h3>
+        <iframe width="420" height="315"
+        src="https://www.youtube.com/embed/04vcTV9Hvfg">
+        </iframe>
+        <hr>
+        <h3>Data</h3>
+        <p>The data I'm using in this project current comes from myself. The API I'm using works on the frontend, and does not actually
+            return data to me, rather, I provide data to tell it what to display. The current data structure I am operating under is a list of JSON objects.
+            Each JSON object contains information about a musical key, and the chords listen in that key. I pass that data to the frontend components which 
+            use the scales_chords_api to display that list in chord form, as well as allow the user to play the sound the chord makes. Here is an example of the data structure:
+            <br>
+            <code>json_data = {
+                "C": {
+                    "chords": ["Cmaj","Dm","Em","Fmaj","Gmaj","Am","Bdim7"]
+                },
+                "D": {
+                    "chords": ["Dmaj","Em","Fm","Gmaj","Amaj","Bm","Cdim7"]
+                },
+                "E": {
+                    "chords": ["Emaj","Fm","Gm","Amaj","Bmaj","Cm","Ddim7"]
+                },
+                "F": {
+                    "chords": ["Fmaj","Gm","Am","Bmaj","Cmaj","Dm","Edim7"]
+                }
+            }</code>
+            Right now, this is only a sample of the data and when the full dataset is done, it will have 12 scales total with probably 10-20 chords in each. 
+        </p>
+        <hr>
+        <h3>Progress</h3>
+        <p>This week I made a lot of progress. I set up the whole project, front and back end (but I haven't deployed the backend yet on Heroku) and began
+            implementing my front end. I got the Scales Chords API to work, and began trying to add more functionality. I spent most of my time mapping out 
+            the best way to structure my data, and thinking about how I want to have the different parts of my project interact. Right now, I'm able to play
+            chords just as I want to which was a major win in my book. The Scales Chords API is pretty awesome despite a few pitfalls that I'm trying to work around
+            right now.
+        </p>
+        <hr>
+        <h3>Concerns</h3>
+        <p>A major concern I have is that the reactivity with the Scales Chords API seems to be broken / not working for me. I'm able to confirm that I am
+            corrently altering the prop that the API references, and the page loads initially as intended, but whenever I alter the key all the chords go away 
+            and I'm not sure why. I've contacted the creators of the API for support, and I intend to go to Office Hours ASAP to fix this issue. 
+        </p>
+        <hr>
+        <h3>Plan</h3>
+        <p>Next week I am going to focus on fixing that issue, instantiating the rest of my data, launching the backend on Heroku, and starting to create my login framework</p>
+        <hr>
+        <h3>Summary</h3>
+        <p>Overall, I feel great about my progress. The Scales Chords API was a huge find for me, and if I'm able to get it working fully will be awesome. Also, I feel
+            really good about the goals I've set for myself as I'm very confident in being able to get them done on time. Overall, I'm excited!
+        </p>
+    </body>
+</html>

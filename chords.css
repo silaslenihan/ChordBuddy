@@ -1,0 +1,79 @@
+/**
+
+Denotes the style for the main page
+
+@author Silas Lenihan
+
+**/
+@charset "utf-8";
+
+body {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    margin: auto;
+    background-color: lightblue;
+}
+
+#subtitle {
+    background-color: yellow;
+}   
+
+header {
+    font-weight: bold;
+    font-size: 2em;
+    display: inline-block;
+}
+
+.bio {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+    display: flex;
+}
+
+header li {
+    float: right;
+    list-style-type: none;
+    padding: 0 25px;
+    display:inline;
+}
+
+
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    float: center;
+}
+
+p {
+    text-align: left;
+}
+
+h3 {
+    text-align:left;
+}
+
+footer {
+    text-align: center;
+    background-color: pink;
+    width: 100%;
+}
+
+
+
+section {
+    width: 50%;
+}
+
+.bordered {
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px solid #c3c3c3;
+}

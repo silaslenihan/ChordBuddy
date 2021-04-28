@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- always put your name in your work -->
+        <meta name="author" content="Silas Lenihan">
+        <!-- scale page to fit entire screen, so it properly fills non-desktop devices -->    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- load required Bootstrap and BootstrapVue CSS -->
+        
+        <!-- load Vue followed by BootstrapVue -->
+        <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+        <!-- load the following for BootstrapVueIcons support -->
+        <!-- load searching component -->
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js@latest/dist/fuse.js"></script>
+        <script src="https://www2.cs.duke.edu/courses/compsci290/spring21/resources/code/components/VueFuse.js"></script>
+   
+        
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.js"></script>
+        <!-- load draggble component -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuedraggable@latest/dist/vuedraggable.umd.js"></script>
+        <link type="text/css" rel="stylesheet" href="chords.css">
+
+        <script defer src="chords.js
+        "></script>
+   
+
+        
+        <title>CompSci 290, Spring 2021 : Chords</title>
+        
+    </head>
+    <body>
+        
+            
+    <h1>Chords Project</h1>
+    <hr>
+    <h4>Idea</h4>
+    <hr>
+    <p>My Idea for the final project is to develop a web application that allows the user to easily
+        create chords progressions. Basically, the app will take inputs from the users (ie: Key, number of chords, etc.) 
+        and the webpage will then display matching chords. In music theory, a song is written in a "key" (sometimes more than one, but just one at a time). For simplicity's 
+        sake, let's just say that a key tells the muscician which notes they can and can't play. Additionally, there are a set
+        of chords that are valid in that key. This app would display all the valid chords, and allow the user to select which chords
+        they want to use in the progression, and then they would be able to play back audio of that progression. A guest user would be able to make progressions,
+        whereas a registered user could save these progressions, and download the audio. 
+    </p>
+    <hr>
+    <h4>Scope</h4>
+    <hr>
+    <p>At the top of the page would be filter inputs for the specified chord set, and then the page would display 
+        results, being a list of chords. These chords would all be selectable objects, and once a chord is selected it would
+        appear at the bottom of the page as part of the chord progression. The user could then drag the chords around and play the progression
+        as they please. I'm also thinking it might be useful to be able to download "MIDI" files containing the progression. A MIDI file
+        essentially contains musical notes, when they are pressed, and how hard. So I think it would be cool to be able to directly
+        download MIDI files to put into a DAW (Digital Audio Workstation.)
+    </p>
+    <hr>
+    <h4>Data Sources</h4>
+    <hr>
+    <p> 
+        <ul>
+            <li>
+                <a href= "https://www.piano-keyboard-guide.com/keyboard-chords.html">List of Chords</a> - I would probably have to 
+                implement my own data structure for these, but I'm thinking a folder containing the chords that I could index into 
+                would suffice.
+            </li>
+        <br>
+            <li>
+                Note Database - To actually construct the chords, I would need to either have a database containing pre-recorded chords or a 
+                database containing individual recorded notes, and simply play all the notes in the chord together at once. Either way,
+                I would probably manually record these through my own methods, and store the data within the app. I wasn't able to find a preexisting
+                data source for either of these options. 
+            </li>
+    </ul>
+    </p>
+    <hr>
+    <h4>Data Structure</h4>
+    <hr>
+    Since all I have to store for this app is the pictures containing the chords, and the choresponding mp3 files, 
+    I think a simple SQL data base would possibly work. 
+    <hr>    
+    <h4>Wireframe</h4>
+    <hr>
+    <img src = "wireframe-1.jpg" width="500">
+    <img src = "wireframe-2.jpg" width="500">
+    <hr>
+    <h4>Schedule</h4>
+    <hr>
+    <ol>
+        <li>
+            Create basic webpage, style, and functionality. Goal ~ March 30th
+        </li>
+        <li>
+            Create storage for the app's data, possibly a fully functioning databse. Goal ~ April 6th
+        </li>
+        <li>
+            Create Search page for searching and filtering chords, and creating a playable progression. Goal ~ April 13th
+        </li>
+        <li>
+            Create login interface, finish styling Goal ~ April 20th
+        </li>
+    </ol>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- always put your name in your work -->
+        <meta name="author" content="Silas Lenihan">
+        <!-- scale page to fit entire screen, so it properly fills non-desktop devices -->    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- load required Bootstrap and BootstrapVue CSS -->
+        
+        <!-- load Vue followed by BootstrapVue -->
+        <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+        <!-- load the following for BootstrapVueIcons support -->
+        <!-- load searching component -->
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js@latest/dist/fuse.js"></script>
+        <script src="https://www2.cs.duke.edu/courses/compsci290/spring21/resources/code/components/VueFuse.js"></script>
+   
+        
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.js"></script>
+        <!-- load draggble component -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuedraggable@latest/dist/vuedraggable.umd.js"></script>
+        <link type="text/css" rel="stylesheet" href="chords.css">
+
+        <script defer src="chords.js
+        "></script>
+   
+
+        
+        <title>CompSci 290, Spring 2021 : Chords</title>
+        
+    </head>
+    <body>
+        <h1>Progress Report 2</h1>
+        <hr>
+        <h3>Video</h3>
+        <iframe width="420" height="315"
+        src="https://www.youtube.com/embed/JAbKBe2X_U0">
+        </iframe>
+        <hr>
+        <h3>Data</h3>
+        <p>This week, I decided to overhaul the structure of my backend pretty much completely. Instead of using the Scales Chords API,
+            I have decided to host the sounds and images for chords on firebase and upload these
+            files myself. Additionally, I am using the Tonal API to get chord information on the backend
+            which will in turn tell the frontend which chords to display. It returns a simple array of chord names like so:
+            <code>[ 'Bm', 'Csharpdim', 'Dmaj', 'Em', 'Fsharpm', 'Gmaj', 'Amaj' ]</code>. 
+        </p>
+        <hr>
+        <h3>Progress</h3>
+        <p>This was a pretty hectic week for me in terms of the Final Project. For the first half of the week I attempted to fix my issues with
+            the Scales Chords API. Essentially my issue was that I couldn't get the chords to reload on the apge when the 
+            underlying data structure was changed. I tried many different things, spent a lot of time in office hours and on piazza, and even 
+            tried a Stack Overflow post. All of this was to no avail, so I decided to cut my losses
+            and try a different method. I decided to upload my image and audio files to fire base (currently just images). I got my fire base 
+            up and running and connected to the backend, as well as setting up my functioning Heroku server. Unfortunately I'm currently working running
+            into a few issues with both of those, so the current state of the app is not showing much. However, I consider getting the firebase and heroku up 
+            a big win, as well as finalizing my approach to the app. Once I iron out a couple issues I should be in a really good spot.
+        </p>
+        <hr>
+        <h3>Concerns</h3>
+        <p>The major concerns for me right now are the issues I'm running into with Firebase and Heroku. I think I am close to getting them fixed,
+            but simply due to time constraints I don't have them fixed for this progress report. I should have them fixed within the next few days and I should be in a good spot.
+        </p>
+        <hr>
+        <h3>Learning</h3>
+        <p>I've definitely learned a lot this week, specifically about google authentification and firebase. I worked with traditional SQL
+            databases a lot so its definitely been cool learning about a database like firebase.
+        </p>
+        <hr>
+        <h3>Plan</h3>
+        <p>Next week I plan to fix up the Firebase and Heroku issues I have, and move on to implementing the main functionality of the app. Hopefully I can Also
+            start working on user authentication.
+        </p>
+        <hr>
+        <h3>Summary</h3>
+        <p>Overall, I feel pretty good about my progress and think I'm in a good spot to make a big jump in the coming week. I definitely have fallen a little behind
+            with all the issues I ran into this week but I should still be on track to stay with my progress goals. 
+        </p>
+    </body>
+</html>

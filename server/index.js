@@ -156,7 +156,7 @@ app.put(
         ref.push(chords);
         res.json({ status: 'ok' });
 
-        log = `User deleted progression: (Email: ${email} userID: ${userID}) at ${currentTime()}`
+        log = `User created progression: (Email: ${email} userID: ${userID}) at ${currentTime()}`
         let logsRef = db.ref('logs');
         logsRef.push(log);
     },

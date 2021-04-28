@@ -60,7 +60,6 @@ app.get(
         const id = extractUserId(req);
         const email = req.user?.emails ? req.user.emails[0].value : null;
         const type = req.query.type;
-        console.log(type);
         if (id != '<none>') {
             userData = await getData(id, email,type);
         }
@@ -108,7 +107,6 @@ async function getData (userID, email, type) {
         log = `User logged in: (Email: ${email} userID: ${userID}) at ${currentTime()}`
     }
     if (log != "" && type == "login") {
-        console.log("test");
         let logsRef = db.ref('logs');
         logsRef.push(log);
     }

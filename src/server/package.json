@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "local-only": "nodemon server.js --local-only",
+    "local-only-with-google-auth": "nodemon server.js --local-only-with-google-auth"
+  },
+  "author": "Silas Lenihan",
+  "license": "ISC",
+  "dependencies": {
+    "@firebase/database": "^0.9.11",
+    "@google-cloud/storage": "^5.3.0",
+    "@tonaljs/tonal": "^4.6.0",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "morgan-body": "^2.6.5",
+    "firebase-admin": "^9.6.0",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-http": "^0.3.0"
+  }
+}

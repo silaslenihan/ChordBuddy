@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <!-- always put your name in your work -->
+        <meta name="author" content="Silas Lenihan">
+        <!-- scale page to fit entire screen, so it properly fills non-desktop devices -->    
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- load required Bootstrap and BootstrapVue CSS -->
+        
+        <!-- load Vue followed by BootstrapVue -->
+        <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.js"></script>
+        <!-- load the following for BootstrapVueIcons support -->
+        <!-- load searching component -->
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js@latest/dist/fuse.js"></script>
+        <script src="https://www2.cs.duke.edu/courses/compsci290/spring21/resources/code/components/VueFuse.js"></script>
+   
+        
+        <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.js"></script>
+        <!-- load draggble component -->
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuedraggable@latest/dist/vuedraggable.umd.js"></script>
+        <link type="text/css" rel="stylesheet" href="chords.css">
+
+        <script defer src="chords.js
+        "></script>
+   
+
+        
+        <title>CompSci 290, Spring 2021 : Chords welcome page</title>
+        
+    </head>
+    <body>
+        <h1>Chord Buddy Welcome Page</h1>
+        <hr>
+        <h3>Project Idea</h3>
+        <p>One of my hobbies that I like to spend my free time enjoying is music production. Most of the time, I will
+        start a song by creating simple chord progression on piano. Since I'm a relatively new piano player, I 
+        don't always have the ability to just play a good sounding progression. Often times, I have to look up
+        what chords can be played in a certain key, what are common chord progressions, etc. This website seeks to
+        simpify that problem. The website automatically gives the user the available chords in a certain key and allows
+        the user to create a full chord progression with just a couple clicks. It allows the user to save this progression
+        so they can come back to it later also. 
+        </p>
+        <h3>How it works</h3>
+        <p>The app is split into a frontend ui and a backend server like most web apps are. At a high level, 
+            the front end sends requests to the backend based on what information it needs (ie: Chord information,
+            user information) as well as put requests (delete and create data). 
+        </p>
+        <h3>Attributions</h3>
+        <p>This app was built using Vue JS, and utilizes Heroku to host the backend, Google Firebase realtime
+            database, as well as Google Firebase storage for storing my images and audio files. The audio files were generated 
+            by me using <a href="https://www.ableton.com/en/shop/live/">Ableton Live</a> and the images are from
+            <a href="https://www.piano-keyboard-guide.com/keyboard-chords.html">Piano Keyboard Guide</a>. Additionally, 
+            the app uses <a href= "https://github.com/tonaljs/tonal">Tonal JS</a> to query chord information.
+        </p>
+        <h3>Main App Page</h3>
+        <p><a href="https://compsci290_2021spring.dukecs.io/portfolio_sjl58/Chords/dist/#">Main App Page</a>
+        <h3>Video</h3>
+        <iframe width="420" height="315" 
+        src="https://www.youtube.com/embed/i8qdIRFzL2E">
+        </iframe></p>
+        <h3>Example json data</h3>
+        <p><a href ="https://young-falls-82514.herokuapp.com/api/getLogs">Here</a> is a link to a 
+        sample request to the backend to get live log information.</p>
+
+    </body>
+</html>

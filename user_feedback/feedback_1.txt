@@ -1,0 +1,14 @@
+These results were captured using a Google form and copied into this file
+-------------------------------------------------------------------------
+Email address: apmitrokostas@gmail.com
+-------------------------------------------------------------------------
+Your Name: Al
+-------------------------------------------------------------------------
+How would you rate the overall functionality of the website: 9
+-------------------------------------------------------------------------
+Did the webpage load fast?: Yes
+-------------------------------------------------------------------------
+Please list any issues you had with the app: contact and login text are off center on mobile display 
+-------------------------------------------------------------------------
+Additional Comments / Feedback: this will be really beneficial to me as a musician
+-------------------------------------------------------------------------

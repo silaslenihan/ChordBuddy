@@ -89,7 +89,6 @@ async function getData (userID, email, type) {
     let userRef = db.ref(`users/${userID}`);
     const snapshot = await userRef.once('value');
     userData = snapshot.val();
-    
     // if user is logged in and they have no userData, then we must initialize that user in Firebase. 
     if (userID != '<none>' && userData == null) {
         log = `New user created: (Email: ${email} userID: ${userID}) at ${currentTime()}`

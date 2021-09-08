@@ -1,6 +1,6 @@
-# module3 README
+# Chordbuddy
 
-Final Project Readme, this shows the resources I used to complete this project along with other information.
+ChordBuddy, this shows the resources I used to complete this project along with other information.
 
 ## Name: Silas Lenihan
 

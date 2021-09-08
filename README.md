@@ -35,7 +35,7 @@ Resiliency: There is no way for the user to input bad data resulting in an inter
 
 ### Framework choices:
 Originally I had decided to try to use a framework called the Scales Chords API. This framework seemed incredibly convienient for the project at first, because I could easily display and listen to chords from. There were two major issues that made me decide to go a different route however. 
-1. I was able to get this to work reactively. For example, the chords would load flawlessly upon first load, however, when I tried to change the key the chords would simply go away. After days and days of trial and error I decided to give up and spend my time uploading the assets manually. That is why I have a database containing sounds and audio files.
+1. I was not able to get this to work reactively. For example, the chords would load flawlessly upon first load, however, when I tried to change the key the chords would simply go away. After days and days of trial and error I decided to give up and spend my time uploading the assets manually. That is why I have a database containing sounds and audio files.
 2. There was no way to automatically play the chords in a sequence.
 
 The second major decision I made framework wise was to go with the Tonal JS API. Originally I had planned to manually input all the chord metadata and store that either on my backend or in my database, however, I discovered the Tonal JS API which allowed me to dynamically access this data whenever I needed. It also has provided a much larger degree of flexibility and room from improvement for future upgrades.

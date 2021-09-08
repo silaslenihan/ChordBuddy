@@ -4,14 +4,6 @@ ChordBuddy, this shows the resources I used to complete this project along with 
 
 ## Name: Silas Lenihan
 
-### Timeline
-
-Start Date: 4/7/21
-
-Finish Date: 4/28/21
-
-Hours Spent: 40-50
-
 # Setup instructions:
 Generate new google Oauth credentials to place in secrets.js file within src/server/secrets.js
 Documentation on how to do this can be found here: https://support.google.com/googleapi/answer/6158849?hl=en

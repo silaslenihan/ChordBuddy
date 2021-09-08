@@ -2,7 +2,7 @@
 
 ChordBuddy, this shows the resources I used to complete this project along with other information.
 
-## Name: Silas Lenihan
+## Silas Lenihan
 
 # Setup instructions:
 Generate new google Oauth credentials to place in secrets.js file within src/server/secrets.js
